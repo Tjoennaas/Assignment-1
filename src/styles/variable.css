@@ -1,0 +1,17 @@
+
+:root {
+	--font-size-base: 30px;
+
+	--color-primary:#1D2423;
+	--color-secondary: #FEF9F9;
+
+	--color-tertiary:  #090909;
+
+
+
+	--border-radius: 10px;
+
+	--spacing-small: 0.5rem;
+	--spacing-medium: 1rem;
+	--spacing-large: 2rem;
+}
