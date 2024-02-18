@@ -7,8 +7,10 @@
 	--color-tertiary:#090909;
 
 	--border: 6rem;
+	--bacground-img: url('src/bilde3.jpg');
 
 	--spacing-small: 0.5rem;
 	--spacing-medium: 1rem;
 	--spacing-large: 2rem;
+
 }
