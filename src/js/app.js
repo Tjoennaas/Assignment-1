@@ -1,5 +1,4 @@
-
-                        
+           
     
 // Apiendpoint: to specify wich Category i want to add from  swapiApi.
        const apiEndpoints = {      
@@ -19,18 +18,18 @@
         };
 
         const recordImages = { //Adding image to each of the records.
-                  "Luke Skywalker": "assets/nr1.jpg",
-                  "Darth Vader": "assets/nr2.jpg",
-                  "C-3PO":"assets/nr3.jpg",
-                  "Leia Organa":"assets/nr4.jpg",
-                  "Obi-Wan Kenobi": "assets/nr5.jpg",
-                  "R2-D2": "assets/nr6.jpg",
+                   "Luke Skywalker": "assets/nr1.jpg",
+                   "Darth Vader": "assets/nr2.jpg",
+                   "C-3PO":"assets/nr3.jpg",
+                   "Leia Organa":"assets/nr4.jpg",
+                   "Obi-Wan Kenobi": "assets/nr5.jpg",
+                   "R2-D2": "assets/nr6.jpg",
 
-                  "The Phantom Menace": "assets/nr7.jpg",
-                  "Attack of the Clones": "assets/nr8.jpg",
-                  "Revenge of the Sith": "assets/nr9.jpg",
-                  "A New Hope": "assets/nr10.jpg",
-                  "The Empire Strikes Back": "assets/nr11.jpg",
+                   "The Phantom Menace": "assets/nr7.jpg",
+                   "Attack of the Clones": "assets/nr8.jpg",
+                   "Revenge of the Sith": "assets/nr9.jpg",
+                   "A New Hope": "assets/nr10.jpg",
+                   "The Empire Strikes Back": "assets/nr11.jpg",
                    "Return of the Jedi": "assets/nr12.jpg",
 
                    "Tatooine":"assets/nr13.jpg",
@@ -40,8 +39,8 @@
                    "Dagobah":"assets/nr17.jpg",
                    "Bespin":"assets/nr18.jpg",
 
-                   "TIE Advanced x1": "assets/nr19.jpg",
-                   "Y-wing":"assets/nr20.jpg",
+                    "TIE Advanced x1": "assets/nr19.jpg",
+                    "Y-wing":"assets/nr20.jpg",
                     "Millennium Falcon": "assets/nr21.jpg",
                     "Death Star":"assets/nr22.jpg",
                     "Sentinel-class landing craft": "assets/nr23.jpg",
@@ -56,20 +55,20 @@
         button.addEventListener('click', async () => {  // The async will execute data from swapiAPI,when butons are activ.
 
 
-       const category = document.querySelector('.category');
-       const backButton = document.querySelector( '.backButton');
-       const contentContainer = document.querySelector('[data-to-show]');
+        const category = document.querySelector('.category');
+        const backButton = document.querySelector( '.backButton');
+        const contentContainer = document.querySelector('[data-to-show]');
 
 //Toggle visibility
-       category.classList.add( 'hidden');
-       backButton.classList.remove('hidden');
-       contentContainer.classList.remove('hidden');
+        category.classList.add( 'hidden');
+        backButton.classList.remove('hidden');
+        contentContainer.classList.remove('hidden');
 
 
 // GetAttribute: retrieves the value of the data-target attribute from the clicked button.
 // The value is then used to look up the API endpoint.
-      const dataTarget= button.getAttribute('data-target');
-      const endpointsUrl= apiEndpoints[dataTarget];
+       const dataTarget= button.getAttribute('data-target');
+       const endpointsUrl= apiEndpoints[dataTarget];
 
 
         try {
@@ -80,22 +79,22 @@
          } catch (error) {
         console.error('Error fetching data:', error);
           }
+
         });
-     });  
+
+      });  
 
        const renderData = (data, dataTarget) => {
        const contentContainer = document.querySelector('[data-to-show]');
        contentContainer.innerText = ''; 
        const list = document.createElement('ul');
-   
-     
        
       let filteredData;
      
-      if (records[dataTarget].length > 0) {
+       if (records[dataTarget].length > 0) {
        filteredData = data.filter(item => records[dataTarget].includes(item.name || item.title));
        } else {
-      filteredData = data; 
+       filteredData = data; 
      }
      
       filteredData.forEach(item => {
@@ -124,27 +123,27 @@
    
    switch (dataTarget) {
        case 'people':
-           itemProperties.textContent = `Height: ${item.height},Birth Year: ${item.birth_year}, Hair color: ${item.hair_color}, Skin color: ${item.skin_color}, Gender: ${item.gender}`;
-            break;
+           itemProperties.textContent = `Height: ${item.height}. Birth Year: ${item.birth_year}. Hair color: ${item.hair_color}. Skin color: ${item.skin_color}. Gender: ${item.gender}`;
+             break;
        case 'films':
-           itemProperties.textContent = `Release Date: ${item.release_date}, Dirctor: ${ item.director}, Edited: ${item.edited}, Producer: ${item.producer}, Crated: ${item.created} `;
+           itemProperties.textContent = `Release Date: ${item.release_date}. Dirctor: ${ item.director}. Edited: ${item.edited}. Producer: ${item.producer}. Crated: ${item.created}. `;
              break;
        case 'planets':
-           itemProperties.textContent = `Climate: ${item.climate}, Terrain: ${ item.terrain}, Created: ${item.created}, Diameter: ${item.diameter}, Gravity ${item.gravity} `;
-           break;
-        case 'starships':
-              itemProperties.textContent = `Manufacturer: ${item.manufacturer}, Model: ${item.model}, Cost in credits: ${item.cost_in_credits}, Length: ${item.length}`;
+           itemProperties.textContent = `Climate: ${item.climate}. Terrain: ${ item.terrain}. Created: ${item.created}. Diameter: ${item.diameter}. Gravity ${item.gravity}. `;
+             break;
+       case 'starships':
+              itemProperties.textContent = `Manufacturer: ${item.manufacturer}. Model: ${item.model}. Cost in credits: ${item.cost_in_credits}. Length: ${item.length}.`;
         break;
 
        default:
       itemProperties.textContent = "No additional information available.";
      
-        }
-   
-      });  
+          }
+
+      });
+
     };
   
-
      const backButton = document.querySelector('.backButton');
      backButton.addEventListener('click', () => {
      const category = document.querySelector('.category');
