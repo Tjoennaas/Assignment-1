@@ -11,3 +11,6 @@ Browser support: No known browser issues.
 The webpage has responsive design suited for all formats.
 
 Referances: The resources is mainly used due to work with JavaScript. Mostly things we learned in-and from the documentation of- lectures at school.  
+ Other references:  https://swapi.dev
+                   Professional JavaScript for Web Developers av Matt Frisbie
+                   
