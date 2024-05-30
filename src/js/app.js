@@ -57,49 +57,69 @@ filteredData = data;
 
 filteredData.forEach(item => {
 
-const listItem = document.createElement('li');
-const image = document.createElement('img');
-const textContainer = document.createElement('div');
-const itemName = document.createElement('p');
-const itemProperties = document.createElement('p');
 
-listItem.appendChild(image);
-textContainer.appendChild(itemName);
-textContainer.appendChild(itemProperties);
-listItem.appendChild(textContainer);
-list.appendChild(listItem);
+  const listItem = document.createElement('li');
+  const image = document.createElement('img');
+  const textContainer = document.createElement('div');
+  const itemName = document.createElement('p');
+  const itemProperties = document.createElement('div'); 
+  
+  itemProperties.classList.add('item-properties');
+  
+  
+  listItem.appendChild(image);
+  textContainer.appendChild(itemName);
+  textContainer.appendChild(itemProperties);
+  listItem.appendChild(textContainer);
+  list.appendChild(listItem); 
+  
+  contentContainer.appendChild(list); 
+  
 
-contentContainer.appendChild(list);
-
-// provides description of the image for screen readers used by visually impaired users.
-// Serves as a placeholder if the image fails to load.
-itemName.textContent = item.name || item.title;
-image.src = recordImages[itemName.textContent]; 
-image.alt = itemName.textContent;
-itemName.textContent = `Name: ${item.name || item.title}`;
-
-
-switch (dataTarget) {
-case 'people':
-   itemProperties.textContent = `Height: ${item.height}. Birth Year: ${item.birth_year}. Hair color: ${item.hair_color}. Skin color: ${item.skin_color}. Gender: ${item.gender}`;
-     break;
-case 'films':
-   itemProperties.textContent = `Release Date: ${item.release_date}. Dirctor: ${ item.director}. Edited: ${item.edited}. Producer: ${item.producer}. Crated: ${item.created}. `;
-     break;
-case 'planets':
-   itemProperties.textContent = `Climate: ${item.climate}. Terrain: ${ item.terrain}. Created: ${item.created}. Diameter: ${item.diameter}. Gravity ${item.gravity}. `;
-     break;
-case 'starships':
-      itemProperties.textContent = `Manufacturer: ${item.manufacturer}. Model: ${item.model}. Cost in credits: ${item.cost_in_credits}. Length: ${item.length}.`;
-break;
-
-default:
-itemProperties.textContent = "No additional information available.";
-
+  itemName.textContent = item.name || item.title;
+  image.src = recordImages[itemName.textContent]; 
+  image.alt = itemName.textContent;
+  itemName.textContent = `Name: ${item.name || item.title}`;
+  
+  function addProperty(text) {
+      const p = document.createElement('p');
+      p.textContent = text;
+      itemProperties.appendChild(p);
   }
-
-});
-
+  
+  // Switch case to handle different item properties based on `dataTarget`
+  switch (dataTarget) {
+      case 'people':
+          addProperty(`Height: ${item.height}`);
+          addProperty(`Birth Year: ${item.birth_year}`);
+          addProperty(`Hair Color: ${item.hair_color}`);
+          addProperty(`Skin Color: ${item.skin_color}`);
+          addProperty(`Gender: ${item.gender}`);
+          break;
+      case 'films':
+          addProperty(`Release Date: ${item.release_date}`);
+          addProperty(`Director: ${item.director}`);
+          addProperty(`Edited: ${item.edited}`);
+          addProperty(`Producer: ${item.producer}`);
+          addProperty(`Created: ${item.created}`);
+          break;
+      case 'planets':
+          addProperty(`Climate: ${item.climate}`);
+          addProperty(`Terrain: ${item.terrain}`);
+          addProperty(`Created: ${item.created}`);
+          addProperty(`Diameter: ${item.diameter}`);
+          addProperty(`Gravity: ${item.gravity}`);
+          break;
+      case 'starships':
+          addProperty(`Manufacturer: ${item.manufacturer}`);
+          addProperty(`Model: ${item.model}`);
+          addProperty(`Cost in credits: ${item.cost_in_credits}`);
+          addProperty(`Length: ${item.length}`);
+          break;
+      default:
+          addProperty("No additional information available.");
+      }
+   });
 };
 
 const backButton = document.querySelector('.backButton');
